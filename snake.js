@@ -129,8 +129,6 @@ function move(){
     checkLose();
 }
 function moveLeft() {
-    // saveCoordinates();
-
     let left = snakeHead.offsetLeft;
     left -= speed;
     snakeHead.style.left = left + 'px';
@@ -140,7 +138,6 @@ function moveLeft() {
     checkLose();
 }
 function moveUp() {
-    // saveCoordinates();
     let up = snakeHead.offsetTop;
     up -= speed;
     snakeHead.style.top = up + 'px';
@@ -151,7 +148,6 @@ function moveUp() {
 }
 
 function moveRight() {
-    // saveCoordinates();
     let right = snakeHead.offsetLeft;
     right += speed;
     snakeHead.style.left = right + 'px';
@@ -162,7 +158,6 @@ function moveRight() {
 }
 
 function moveDown() {
-    // saveCoordinates();
     let down = snakeHead.offsetTop;
     down += speed;
     snakeHead.style.top = down + 'px';
