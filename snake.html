@@ -25,6 +25,7 @@
         let border= document.getElementById("border");
         let changedSpeed = false;
         let delay = 300;
+        let foodOnSnake=false;
         function play() {
             snakeHead=document.createElement('div');
             snakeHead.classList.add("tail");
@@ -78,7 +79,12 @@
                 fullSnake[i].style.top=coordinate[i][1] +'px';
             }
         }
-        
+        function onSnake(X,Y){
+            for(let i=0; i<coordinate.length; i++){
+                if(coordinate[i][0]==X) return true;
+                else if(coordinate[i][1] == Y) return true;
+            }
+        }
         function randmoFood() {
             minX=0;
             maxX=border.offsetWidth -20;
@@ -88,6 +94,7 @@
             let foodY = Math.floor(Math.random() * ((maxY- minY) / 20) ) * 20;
             snakeFood = document.createElement("div");
             snakeFood.classList.add("food");
+            onSnake(foodX+border.offsetLeft, foodY+border.offsetTop);
             snakeFood.style.left = foodX + border.offsetLeft+ 'px';
             snakeFood.style.top = foodY + border.offsetTop + 'px';
             document.body.appendChild(snakeFood);
@@ -183,6 +190,9 @@
                 document.getElementById("score").innerHTML = ++score;
                 snakeFood.remove();
                 randmoFood();
+                while(foodOnSnake){
+                    randmoFood();
+                }
             }
 
             if(score% 2 == 1 && !changedSpeed){
